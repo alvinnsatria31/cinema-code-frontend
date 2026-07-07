@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Secrets — set these in Netlify's env vars instead
+.env
+.env.local
+.env.*.local
+
+# Logs & OS cruft
+*.log
+.DS_Store
+
+# Next generated types
+next-env.d.ts

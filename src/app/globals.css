@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-midnight text-mist font-body;
+    /* "A Beautiful Blur" atmosphere: soft cobalt + electric auras breathing
+       at the page edges, everything slightly hazy and dark-cozy */
+    background-image:
+      radial-gradient(ellipse 60% 40% at 85% -10%, rgba(26, 82, 255, 0.1), transparent 60%),
+      radial-gradient(ellipse 50% 35% at 0% 100%, rgba(0, 229, 255, 0.05), transparent 60%),
+      radial-gradient(ellipse 40% 30% at 50% 50%, rgba(139, 123, 255, 0.04), transparent 70%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    @apply bg-neon/40 text-ice;
+  }
+
+  /* Slim, theme-matched scrollbars */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #11101c;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a2647;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1a52ff;
+  }
+}
+
+@layer components {
+  /* Reusable blue focus ring for inputs and the code editor */
+  .focus-neon {
+    @apply focus:outline-none focus:ring-1 focus:ring-neon/60 focus:shadow-glow transition-shadow duration-500;
+  }
+
+  /* The "beautiful blur" card: translucent slate-indigo + backdrop blur,
+     so the auras behind it melt into a dreamy haze */
+  .studio-card {
+    @apply bg-surface/70 backdrop-blur-md border border-line rounded-2xl;
+  }
+
+  /* Invisible scrollbar for the horizontal cassette decks — content
+     still swipes/scrolls, the chrome just disappears */
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Slow mechanical rotation for the cassette reel spokes (SVG groups).
+     transform-box keeps the rotation centered on each reel. */
+  .reel-spin {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: reelspin 9s linear infinite;
+  }
+}
+
+@keyframes reelspin {
+  to {
+    transform: rotate(360deg);
+  }
+}
