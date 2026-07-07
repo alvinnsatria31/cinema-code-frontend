@@ -1,0 +1,14 @@
+# Netlify configuration for the Next.js frontend (cinema-code-frontend).
+# The repo root IS the Next.js app, so no `base` directory is needed.
+
+[build]
+  command = "npm run build"
+
+# The official Next.js runtime — turns App Router pages, route handlers
+# (incl. /api/auth/[...nextauth]) and SSR into Netlify Functions.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  # Next 15 + Auth.js v5 need a modern Node runtime
+  NODE_VERSION = "20"
